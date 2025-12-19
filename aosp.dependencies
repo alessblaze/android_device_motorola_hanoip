@@ -1,0 +1,18 @@
+[
+        {
+		"repository": "android_vendor_motorola_hanoip",
+		"target_path": "vendor/motorola/hanoip",
+		"branch": "infinity-oss",
+                "remote":"pixelbuilds-blobs-gitlab"
+	},
+	{
+		"repository": "android_kernel_motorola_sm6150",
+		"target_path": "kernel/motorola/sm6150",
+		"branch": "infinity-oss"
+	},
+        {
+                "repository": "android_hardware_motorola_dolby",
+                "target_path": "hardware/motorola/dolby",
+                "branch": "infinity"
+        }
+]
