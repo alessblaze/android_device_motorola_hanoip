@@ -19,6 +19,7 @@ package com.moto.actions.doze;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.UserHandle;
 import android.util.Log;
 
 import com.moto.actions.SensorAction;
@@ -46,11 +47,13 @@ public class DozePulseAction implements SensorAction, ScreenStateNotifier {
     }
 
     public void action() {
-         if (mayDoze()) {
+        if (mayDoze()) {
             Log.d(TAG, "Sending doze.pulse intent");
-            mContext.sendBroadcast(new Intent("com.android.systemui.doze.pulse"));
+            Intent pulseIntent = new Intent("com.android.systemui.doze.pulse");
+            mContext.sendBroadcastAsUser(pulseIntent, UserHandle.CURRENT);
         }
     }
+
 
     public synchronized boolean mayDoze() {
         long now = System.currentTimeMillis();
