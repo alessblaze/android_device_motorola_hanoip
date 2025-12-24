@@ -206,8 +206,8 @@ TARGET_DISABLED_UBWC := true
 BOARD_USES_METADATA_PARTITION := true
 
 # NFC / ODM
-ODM_MANIFEST_SKUS := nfc
-ODM_MANIFEST_NFC_FILES := device/motorola/hanoip/odm_manifest_nfc.xml
+#ODM_MANIFEST_SKUS := nfc
+#ODM_MANIFEST_NFC_FILES := device/motorola/hanoip/odm_manifest_nfc.xml
 
 # Partitions
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4

@@ -19,7 +19,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.voicecomm=true \
     persist.vendor.audio.fluence.voicerec=false \
-    persist.vendor.audio.fluence.speaker=false \
+    persist.vendor.audio.fluence.speaker=true \
     ro.vendor.audio.sdk.fluencetype=fluencepro \
     ro.vendor.audio.sdk.ssr=false \
     vendor.audio.adm.buffering.ms=2 \
@@ -277,8 +277,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.mot.factory=false
 
 # NFC
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.nfc.port=I2C
+#PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+#    ro.nfc.port=I2C
 
 # OEM Unlock reporting
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
