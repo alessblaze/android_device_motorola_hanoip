@@ -1,35 +1,25 @@
-
 cc_library_shared {
-
-    name: "libgnsspps",
+    name: "libloc_socket",
     vendor: true,
-
-    sanitize: GNSS_SANITIZE,
 
     shared_libs: [
         "libutils",
         "libcutils",
-        "libgps.utils",
         "liblog",
+        "libgps.utils",
     ],
 
-    srcs: ["gnsspps.c"],
+    srcs: ["LocSocket.cpp"],
 
     cflags: [
         "-fno-short-enums",
         "-D_ANDROID_",
-    ] + GNSS_CFLAGS, //# Includes
+    ] + GNSS_CFLAGS,
 
     header_libs: [
+        "libloc_core_headers",
         "libgps.utils_headers",
         "libloc_pla_headers",
+        "liblocation_api_headers",
     ],
-
-}
-
-cc_library_headers {
-
-    name: "libgnsspps_headers",
-    export_include_dirs: ["."],
-    vendor: true,
 }
