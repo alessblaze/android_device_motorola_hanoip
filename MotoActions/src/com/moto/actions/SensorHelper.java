@@ -39,6 +39,7 @@ public class SensorHelper {
     private static final int SENSOR_TYPE_MMI_LIFT = 65556;
     private static final int SENSOR_TYPE_MMI_GLANCE = 65548;
     private static final int SENSOR_TYPE_MMI_GLANCE_APPROACH = 65555;
+    private static final int SENSOR_TYPE_MMI_DOUBLE_TAP = 65566;
     private static final int BATCH_LATENCY_IN_MS = 100;
 
     private final Context mContext;
@@ -92,6 +93,9 @@ public class SensorHelper {
     
     public Sensor getLiftSensor() {
         return mSensorManager.getDefaultSensor(SENSOR_TYPE_MMI_LIFT, true);
+    }
+    public Sensor getDoubleTapSensor() {
+        return mSensorManager.getDefaultSensor(SENSOR_TYPE_MMI_DOUBLE_TAP, true);
     }
 
     public void registerListener(Sensor sensor, SensorEventListener listener) {

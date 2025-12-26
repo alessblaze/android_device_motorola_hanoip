@@ -16,6 +16,13 @@ genfscon sysfs /devices/virtual/input/input4/dt-gesture/enable                  
 genfscon sysfs /devices/virtual/input/input5/dt-gesture/enable                  u:object_r:vendor_sysfs_sensors:s0
 genfscon sysfs /devices/virtual/input/input6/dt-gesture/enable                  u:object_r:vendor_sysfs_sensors:s0
 genfscon sysfs /devices/virtual/input/input7/dt-gesture/enable                  u:object_r:vendor_sysfs_sensors:s0
+genfscon sysfs /devices/virtual/input/input1/dt-gesture/enable_wakeup           u:object_r:vendor_sysfs_sensors:s0
+genfscon sysfs /devices/virtual/input/input2/dt-gesture/enable_wakeup           u:object_r:vendor_sysfs_sensors:s0
+genfscon sysfs /devices/virtual/input/input3/dt-gesture/enable_wakeup           u:object_r:vendor_sysfs_sensors:s0
+genfscon sysfs /devices/virtual/input/input4/dt-gesture/enable_wakeup           u:object_r:vendor_sysfs_sensors:s0
+genfscon sysfs /devices/virtual/input/input5/dt-gesture/enable_wakeup           u:object_r:vendor_sysfs_sensors:s0
+genfscon sysfs /devices/virtual/input/input6/dt-gesture/enable_wakeup           u:object_r:vendor_sysfs_sensors:s0
+genfscon sysfs /devices/virtual/input/input7/dt-gesture/enable_wakeup           u:object_r:vendor_sysfs_sensors:s0
 genfscon proc /sys/kernel/sched_lib_name                                        u:object_r:proc_sched_lib_mask_cpuinfo:s0
 genfscon proc /sys/kernel/sched_lib_mask_force                                  u:object_r:proc_sched_lib_mask_cpuinfo:s0
 

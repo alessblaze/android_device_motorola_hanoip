@@ -33,6 +33,7 @@ Changes present in current device tree and not in official build from PixelBuild
 12) downclocked so 1.61ghz for small cores and 2.17ghz for perf cores.
 13) added nonstandard capsense sensor which should be working fine currently to limit modem radio power 
     as it is needed for human health and safety.
-14) this is mainly for moto g40, as i did not include nfc.    
+14) this is mainly for moto g40, as i did not include nfc.  
+15) Tap2Wake works now  
 
 ![Device Picture](https://motorolain.vtexassets.com/arquivos/ids/157377-1200-auto?width=1200&height=auto&aspect=true)
