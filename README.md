@@ -35,5 +35,8 @@ Changes present in current device tree and not in official build from PixelBuild
     as it is needed for human health and safety.
 14) this is mainly for moto g40, as i did not include nfc.  
 15) Tap2Wake works now  
+16) userspace HAL tap to wake implemented. stay in older commit ffd9f8ad70e5a027f31ddfa40fb26f035ae2c332 for fully working version 
+    and in kernel 20e1b3e106c668d7869b055f4ec3d245094c990c commit in cpu-freq. this needs time and patience. the older mode wakes screen
+    completely. this does doze aod on while also managing stowed. means in pocket it wont turn on screen. this is experimental.
 
 ![Device Picture](https://motorolain.vtexassets.com/arquivos/ids/157377-1200-auto?width=1200&height=auto&aspect=true)
