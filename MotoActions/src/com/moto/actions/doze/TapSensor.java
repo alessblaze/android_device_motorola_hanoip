@@ -65,7 +65,7 @@ public class TapSensor implements ScreenStateNotifier {
 
     @Override
     public void screenTurnedOff() {
-    if (mMotoActionsSettings.isPickUpEnabled() && !mEnabled) {
+    if (mMotoActionsSettings.isTapEnabled() && !mEnabled) {
         Log.d(TAG, "Enabling");
         mSensorHelper.requestTriggerSensor(mTapSensor, mTapTriggerListener);
         mSensorHelper.registerListener(mStowSensor, mStowListener);

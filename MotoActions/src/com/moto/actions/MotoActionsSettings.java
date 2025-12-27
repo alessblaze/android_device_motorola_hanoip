@@ -60,6 +60,14 @@ public class MotoActionsSettings {
     public boolean isChopChopGestureEnabled() {
         return mChopChopEnabled;
     }
+    
+    public static boolean isTapEnabled(ContentResolver contentResolver) {
+        return (Settings.Secure.getInt(contentResolver, Settings.Secure.DOUBLE_TAP_TO_WAKE, 1) != 0);
+    }
+    
+    public boolean isTapEnabled() {
+        return isTapEnabled(mContext.getContentResolver());
+    }
 
     public static boolean isDozeEnabled(ContentResolver contentResolver) {
         return (Settings.Secure.getInt(contentResolver, Settings.Secure.DOZE_ENABLED, 1) != 0);
