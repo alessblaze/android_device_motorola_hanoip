@@ -432,7 +432,7 @@ on property:vendor.wifi.tethering=true
 # Override the AOSP sensor HAL service definition
 # from hardware/interfaces/sensors/2.0/multihal
 # to add input and uhid group access
-service vendor.sensors-hal-2-0-multihal /vendor/bin/hw/android.hardware.sensors@2.0-service.multihal
+service vendor.sensors-hal-2-1-multihal /vendor/bin/hw/android.hardware.sensors@2.1-service.multihal
     override
     class hal
     user system

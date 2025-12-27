@@ -27,6 +27,7 @@ on post-fs
     chmod 0660 /sys/class/sensors/dt-gesture/enable_wakeup
     chown root input /sys/class/sensors/dt-gesture/poll_delay
     chmod 0660 /sys/class/sensors/dt-gesture/poll_delay
+    chown system system /sys/devices/platform/soc/a80000.spi/spi_master/spi2/spi2.0/tap_gesture_pressed
 
 on boot
    # change permission for capsensor

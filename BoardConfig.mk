@@ -210,7 +210,7 @@ BOARD_USES_METADATA_PARTITION := true
 #ODM_MANIFEST_SKUS := nfc
 #ODM_MANIFEST_NFC_FILES := device/motorola/hanoip/odm_manifest_nfc.xml
 
-TARGET_TAP_TO_WAKE_NODE := /sys/class/sensors/dt-gesture/enable_wakeup
+#TARGET_TAP_TO_WAKE_NODE := /sys/class/sensors/dt-gesture/enable_wakeup
 
 # Partitions
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4

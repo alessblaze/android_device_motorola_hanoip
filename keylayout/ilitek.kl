@@ -29,4 +29,5 @@
 # KEY_F1 which we changed to KEY_WAKEUP this code is not copied yet license 
 # is added. so we can map the key to a WAKE_DROPPED to enable tap2wake.
 
-key 143   WAKEUP WAKE_DROPPED
+#key 143   WAKEUP WAKE_DROPPED
+key 143 F1

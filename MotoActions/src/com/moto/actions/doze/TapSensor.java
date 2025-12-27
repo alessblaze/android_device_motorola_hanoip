@@ -15,79 +15,77 @@
  * limitations under the License.
  */
 // This is a special trigger sensor it shows KEY_F1 somehow on trigger at /dev/input/event2
-// writing a hal is cleanest way
 
 package com.moto.actions.doze;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.hardware.TriggerEvent;
+import android.hardware.TriggerEventListener;
 import android.util.Log;
 
 import com.moto.actions.MotoActionsSettings;
 import com.moto.actions.SensorAction;
 import com.moto.actions.SensorHelper;
 
-public class DoubleTapSensor implements ScreenStateNotifier {
-    private static final String TAG = "MotoActions-DoubleTapSensor";
+public class TapSensor implements ScreenStateNotifier {
+    private static final String TAG = "MotoActions-TapSensor";
 
     private final MotoActionsSettings mMotoActionsSettings;
     private final SensorHelper mSensorHelper;
     private final SensorAction mSensorAction;
-    private final Sensor mDoubleTapSensor;
+    private final Sensor mTapSensor;
     private final Sensor mStowSensor;
 
     private boolean mEnabled;
     private boolean mIsStowed;
-    private boolean mLastDoubleTap;
 
-    public DoubleTapSensor(MotoActionsSettings MotoActionsSettings, SensorHelper sensorHelper,
+
+
+    public TapSensor(MotoActionsSettings MotoActionsSettings, SensorHelper sensorHelper,
                         SensorAction action) {
         mMotoActionsSettings = MotoActionsSettings;
         mSensorHelper = sensorHelper;
         mSensorAction = action;
 
-        mDoubleTapSensor = sensorHelper.getDoubleTapSensor();
+        mTapSensor = sensorHelper.getTapSensor();
         mStowSensor = sensorHelper.getStowSensor();
     }
 
     @Override
     public void screenTurnedOn() {
-        if (mEnabled) {
-            Log.d(TAG, "Disabling");
-            mSensorHelper.unregisterListener(mDoubleTapListener);
-            mSensorHelper.unregisterListener(mStowListener);
-            mEnabled = false;
-        }
+    if (mEnabled) {
+        Log.d(TAG, "Disabling");
+        mSensorHelper.cancelTriggerSensor(mTapSensor, mTapTriggerListener);
+        mSensorHelper.unregisterListener(mStowListener);
+        mEnabled = false;
+     }
     }
 
     @Override
     public void screenTurnedOff() {
-        if (mMotoActionsSettings.isPickUpEnabled() && !mEnabled) {
-            Log.d(TAG, "Enabling");
-            mSensorHelper.registerListener(mDoubleTapSensor, mDoubleTapListener);
-            mSensorHelper.registerListener(mStowSensor, mStowListener);
-            mEnabled = true;
-        }
+    if (mMotoActionsSettings.isPickUpEnabled() && !mEnabled) {
+        Log.d(TAG, "Enabling");
+        mSensorHelper.requestTriggerSensor(mTapSensor, mTapTriggerListener);
+        mSensorHelper.registerListener(mStowSensor, mStowListener);
+        mEnabled = true;
+     }
     }
 
-    private final SensorEventListener mDoubleTapListener = new SensorEventListener() {
-        @Override
-        public synchronized void onSensorChanged(SensorEvent event) {
-            boolean thisDoubleTap = (event.values[0] != 0);
 
-            Log.d(TAG, "event: " + thisDoubleTap + " mLastDoubleTap=" + mLastDoubleTap + " mIsStowed=" +
-                    mIsStowed);
+    private final TriggerEventListener mTapTriggerListener = new TriggerEventListener() {
+    @Override
+    public synchronized void onTrigger(TriggerEvent event) {
+    Log.d(TAG, "tap: ts=" + event.timestamp
+            + " values=" + java.util.Arrays.toString(event.values)
+            + " stowed=" + mIsStowed);
 
-            if (mLastDoubleTap && !thisDoubleTap && !mIsStowed) {
-                mSensorAction.action();
-            }
-            mLastDoubleTap = thisDoubleTap;
-        }
+    if (!mIsStowed) mSensorAction.action();
 
-        @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
+    // Re-arm: trigger sensors are one-shot and get canceled automatically after firing.
+    if (mEnabled) mSensorHelper.requestTriggerSensor(mTapSensor, this);
+    }
     };
 
     private final SensorEventListener mStowListener = new SensorEventListener() {

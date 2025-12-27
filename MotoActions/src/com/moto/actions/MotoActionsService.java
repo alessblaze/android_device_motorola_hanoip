@@ -37,7 +37,7 @@ import com.moto.actions.doze.DozePulseAction;
 import com.moto.actions.doze.GlanceSensor;
 import com.moto.actions.doze.LiftSensor;
 import com.moto.actions.doze.FlatUpSensor;
-import com.moto.actions.doze.DoubleTapSensor;
+import com.moto.actions.doze.TapSensor;
 import com.moto.actions.doze.ProximitySensor;
 import com.moto.actions.doze.ScreenReceiver;
 import com.moto.actions.doze.ScreenStateNotifier;
@@ -78,7 +78,7 @@ public class MotoActionsService extends IntentService implements ScreenStateNoti
         //mScreenStateNotifiers.add(new LiftSensor(motoActionsSettings, mSensorHelper, mDozePulseAction));
         mScreenStateNotifiers.add(new ProximitySensor(motoActionsSettings, mSensorHelper, mDozePulseAction));
         mScreenStateNotifiers.add(new StowSensor(motoActionsSettings, mSensorHelper, mDozePulseAction));
-        //mScreenStateNotifiers.add(new DoubleTapSensor(motoActionsSettings, mSensorHelper, mDozePulseAction));
+        mScreenStateNotifiers.add(new TapSensor(motoActionsSettings, mSensorHelper, mDozePulseAction));
         // Other actions that are always enabled
         mUpdatedStateNotifiers.add(new ChopChopSensor(motoActionsSettings, mSensorHelper));
         mUpdatedStateNotifiers.add(new ProximitySilencer(motoActionsSettings, context, mSensorHelper));
