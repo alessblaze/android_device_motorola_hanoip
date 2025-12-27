@@ -85,10 +85,27 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
     }
 #endif
     switch (type) {
-         case Mode::DOUBLE_TAP_TO_WAKE:
-			::android::base::WriteStringToFile(enabled ? "1" : "0",
-				"/sys/class/sensors/dt-gesture/enable", true);
-            break;
+         case Mode::DOUBLE_TAP_TO_WAKE: {
+    		static constexpr const char* kPath = "/sys/class/sensors/dt-gesture/enable";
+
+		std::string cur;
+	        bool curEnabled = false;
+	        if (::android::base::ReadFileToString(kPath, &cur)) {  // reads sysfs node
+	        // sysfs usually returns "0\n" or "1\n"
+        	curEnabled = (!cur.empty() && cur[0] == '1');
+	    } else {
+        	// If read fails, you can choose to still attempt write or just log+return.
+        	// Falling back to writing is common.
+	    }
+
+	    if (curEnabled == enabled) {
+	        // Already in desired state -> do nothing.
+	        break;
+	    }
+
+	    ::android::base::WriteStringToFile(enabled ? "1" : "0", kPath, true);
+	    break;
+	}
         case Mode::LOW_POWER:
             break;
         case Mode::SUSTAINED_PERFORMANCE:
