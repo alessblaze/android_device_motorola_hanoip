@@ -104,6 +104,8 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
 	    }
 
 	    ::android::base::WriteStringToFile(enabled ? "1" : "0", kPath, true);
+	    ::android::base::SetProperty("persist.vendor.gesture.t2w_enabled", 
+                               enabled ? "1" : "0");
 	    break;
 	}
         case Mode::LOW_POWER:

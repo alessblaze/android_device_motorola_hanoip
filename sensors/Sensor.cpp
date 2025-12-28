@@ -19,7 +19,7 @@
 #include <hardware/sensors.h>
 #include <log/log.h>
 #include <utils/SystemClock.h>
-
+#include <android-base/properties.h>
 #include <cmath>
 
 namespace {
@@ -288,15 +288,16 @@ void SingleTapSensor::writeEnable(bool enable) {
 
 void SingleTapSensor::activate(bool enable) {
     std::lock_guard<std::mutex> lock(mRunMutex);
+    bool settingEnabled = android::base::GetBoolProperty(
+        "persist.vendor.gesture.t2w_enabled", true);
+    writeEnable(settingEnabled);
+        if (mIsEnabled != enable) {
+        	mIsEnabled = enable;
 
-    if (mIsEnabled != enable) {
-        mIsEnabled = enable;
-        writeEnable(true);
-
-        interruptPoll();
-        mWaitCV.notify_all();
-    }
-}
+        	interruptPoll();
+        	mWaitCV.notify_all();
+    	} 
+ }
 
 void SingleTapSensor::setOperationMode(OperationMode mode) {
         Sensor::setOperationMode(mode);
