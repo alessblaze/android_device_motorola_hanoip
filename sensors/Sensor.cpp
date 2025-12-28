@@ -226,7 +226,7 @@ SingleTapSensor::SingleTapSensor(int32_t sensorHandle, ISensorsEventCallback* ca
     mSensorInfo.resolution = 1.0f;
     mSensorInfo.power = 0;
     mSensorInfo.flags |= SensorFlagBits::WAKE_UP;
-
+    
     int rc;
 
     rc = pipe(mWaitPipeFd);
@@ -261,11 +261,37 @@ SingleTapSensor::~SingleTapSensor() {
     interruptPoll();
 }
 
+void SingleTapSensor::writeEnable(bool enable) {
+    mEnableStream.open("/sys/class/sensors/dt-gesture/enable");
+    if (mEnableStream) {
+        char currentStatus = ' ';
+        char desiredStatus = enable ? '1' : '0';
+        mReadStream.open("/sys/class/sensors/dt-gesture/enable");
+        if (mReadStream.is_open()) {
+           mReadStream >> currentStatus;
+        } else {
+           ALOGE("Failed to read current enable state");
+           mEnableStream.close();
+           return;
+    	}
+        mReadStream.close();
+        if (currentStatus != desiredStatus) {
+                mEnableStream << desiredStatus << std::flush;
+        }
+        
+    } else {
+        	ALOGE("Failed to write enable state");
+        	return;
+    }
+    mEnableStream.close();
+}
+
 void SingleTapSensor::activate(bool enable) {
     std::lock_guard<std::mutex> lock(mRunMutex);
 
     if (mIsEnabled != enable) {
         mIsEnabled = enable;
+        writeEnable(true);
 
         interruptPoll();
         mWaitCV.notify_all();
@@ -273,8 +299,8 @@ void SingleTapSensor::activate(bool enable) {
 }
 
 void SingleTapSensor::setOperationMode(OperationMode mode) {
-    Sensor::setOperationMode(mode);
-    interruptPoll();
+        Sensor::setOperationMode(mode);
+        interruptPoll();
 }
 
 void SingleTapSensor::run() {

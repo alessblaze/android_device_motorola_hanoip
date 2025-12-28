@@ -22,6 +22,7 @@
 #include <unistd.h>
 
 #include <condition_variable>
+#include <fstream>
 #include <memory>
 #include <mutex>
 #include <thread>
@@ -95,13 +96,15 @@ class SingleTapSensor : public OneShotSensor {
   public:
     SingleTapSensor(int32_t sensorHandle, ISensorsEventCallback* callback);
     virtual ~SingleTapSensor() override;
-
+    virtual void writeEnable(bool enable);
     virtual void activate(bool enable) override;
     virtual void setOperationMode(OperationMode mode) override;
 
   protected:
     virtual void run() override;
     virtual std::vector<Event> readEvents();
+    std::ofstream mEnableStream;
+    std::ifstream mReadStream;
 
   private:
     void interruptPoll();
