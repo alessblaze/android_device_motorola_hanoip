@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2015 The CyanogenMod Project
  * Copyright (C) 2017-2022 The LineageOS Project
+ * Copyright (C) 2025 Aless Microsystems
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// This is a special trigger sensor it shows KEY_F1 somehow on trigger at /dev/input/event2
+ 
+// The kernel logic and the sensor hal plus this tap code is compatible with
+// all touch ics which have similar characteristics. not just ilitek.
+// all it needs to be added correct code at correct place.
+// kernel irqs and sysfs works the same mostly accross all the touch ics
+// depends on where you notifying the sysfs and how much you want to
+// not use vendor hals which in future may need constant patching.
+// we can notify via drm/fb path which we doing currently.
+// we can also notify via panel notifications.
+// all we need is to find proper path of code where it notifies any vendor
+// hal motorola, samsung, xiaomi, huawei doesn't matter.
+// example links to read to understand
+// https://github.com/LineageOS/android_kernel_motorola_sm8550-modules/blob/f3f462029acff3a64f67f4c2068ce3d97522a73f/motorola/drivers/input/touchscreen/focaltech_v2_mmi/focaltech_gesture.c#L276
+// https://github.com/LineageOS/android_kernel_xiaomi_sm8250/blob/e6a50a8beb81fe11a21096b609959e376ebaa1c8/drivers/input/touchscreen/goodix_driver_gt9886/goodix_ts_gesture.c#L345
 
 package com.moto.actions.doze;
 
