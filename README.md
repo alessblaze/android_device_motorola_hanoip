@@ -56,4 +56,10 @@ Changes present in current device tree and not in official build from PixelBuild
     the sysfs changed but also disable the sensor after and re enabling it. it goes to down same issue. so we chosen the software method, to not disable the,
     sensorm rather only get the interrupt and listen again, disabling and enabling is managed in software flags, which is fine as the earlier part of this,
     explains why. its mostly functional currently.
+18) additional safeguards added. moto vendor bin could give the same device address. as it is just tap to wake. its safe to re assign a seperate. device base,
+    and enable nodes. in kernel. we changed the neccessary paths and in android device build config. we changed to adapt to new nodes. now its reliable as reliable,
+    as moto original. would need more tests but dt-sensor path is gone . selinux rules also on our custom t2w nodes. so moto original gesture which never worked 
+    (at least i wont reverse the binary to find the interface, rather writing whats needed with full control for full support is better.). we got new sensor hal for it,
+    new methods, moto actions changed to adapt it. its same as tap to wake settings. and it all works. i really like to tap and check notifs and time on it. rest of sensors
+    would work same as moto vendor binary.    
 ![Device Picture](https://motorolain.vtexassets.com/arquivos/ids/157377-1200-auto?width=1200&height=auto&aspect=true)
