@@ -21,12 +21,12 @@ on init
 
 on post-fs
     mount none /vendor/firmware_mnt/image/bdwlan_hanoip_ipa.bin /vendor/firmware_mnt/image/bdwlan.bin bind
-    chown root input /sys/class/sensors/dt-gesture/enable
-    chmod 0660 /sys/class/sensors/dt-gesture/enable
-    chown root input /sys/class/sensors/dt-gesture/enable_wakeup
-    chmod 0660 /sys/class/sensors/dt-gesture/enable_wakeup
-    chown root input /sys/class/sensors/dt-gesture/poll_delay
-    chmod 0660 /sys/class/sensors/dt-gesture/poll_delay
+    chown root input /sys/class/sensors/t2w-gesture/enable
+    chmod 0660 /sys/class/sensors/t2w-gesture/enable
+    chown root input /sys/class/sensors/t2w-gesture/enable_wakeup
+    chmod 0660 /sys/class/sensors/t2w-gesture/enable_wakeup
+    chown root input /sys/class/sensors/t2w-gesture/poll_delay
+    chmod 0660 /sys/class/sensors/t2w-gesture/poll_delay
     chown system system /sys/devices/platform/soc/a80000.spi/spi_master/spi2/spi2.0/tap_gesture_pressed
 
 on boot

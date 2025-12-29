@@ -262,11 +262,11 @@ SingleTapSensor::~SingleTapSensor() {
 }
 
 void SingleTapSensor::writeEnable(bool enable) {
-    mEnableStream.open("/sys/class/sensors/dt-gesture/enable");
+    mEnableStream.open("/sys/class/sensors/t2w-gesture/enable");
     if (mEnableStream) {
         char currentStatus = ' ';
         char desiredStatus = enable ? '1' : '0';
-        mReadStream.open("/sys/class/sensors/dt-gesture/enable");
+        mReadStream.open("/sys/class/sensors/t2w-gesture/enable");
         if (mReadStream.is_open()) {
            mReadStream >> currentStatus;
         } else {

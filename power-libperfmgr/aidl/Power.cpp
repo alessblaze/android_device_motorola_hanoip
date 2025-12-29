@@ -86,7 +86,7 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
 #endif
     switch (type) {
          case Mode::DOUBLE_TAP_TO_WAKE: {
-    		static constexpr const char* kPath = "/sys/class/sensors/dt-gesture/enable";
+    		static constexpr const char* kPath = "/sys/class/sensors/t2w-gesture/enable";
 
 		std::string cur;
 	        bool curEnabled = false;
