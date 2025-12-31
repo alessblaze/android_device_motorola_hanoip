@@ -73,6 +73,7 @@ public class Constants {
     public static final int ACTION_MESSAGES = 119;
     public static final int ACTION_PIP = 120;
     public static final int ACTION_LAST_APP = 121;
+    public static final int ACTION_TOGGLE_DND = 122;
     public static final int[] sFPSupportedActions = new int[]{
             ACTION_HOME,
             ACTION_POWER,
@@ -88,7 +89,8 @@ public class Constants {
             ACTION_CAMERA,
             ACTION_SCREENSHOT,
             ACTION_PIP,
-            ACTION_LAST_APP
+            ACTION_LAST_APP,
+            ACTION_TOGGLE_DND
     };
     public static final int[] sFPSupportedActionsScreenOff = new int[]{
             ACTION_POWER,
@@ -98,7 +100,8 @@ public class Constants {
             ACTION_PREVIOUS_TRACK,
             ACTION_NEXT_TRACK,
             ACTION_FLASHLIGHT,
-            ACTION_CAMERA
+            ACTION_CAMERA,
+            ACTION_TOGGLE_DND
     };
 
     // Swap keys
@@ -139,7 +142,8 @@ public class Constants {
             ACTION_BROWSER,
             ACTION_DIALER,
             ACTION_EMAIL,
-            ACTION_MESSAGES
+            ACTION_MESSAGES,
+            ACTION_TOGGLE_DND
     };
 
     // Assistant key

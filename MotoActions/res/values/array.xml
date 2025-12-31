@@ -29,6 +29,7 @@
         <item>@string/action_camera</item>
         <item>@string/action_screenshot</item>
         <item>@string/action_pip</item>
+        <item>@string/action_dnd</item>
     </string-array>
     <string-array name="fp_keys_listValues">
         <item>0</item>
@@ -47,6 +48,7 @@
         <item>111</item> <!-- camera -->
         <item>112</item> <!-- screenshot -->
         <item>120</item> <!-- pip -->
+        <item>122</item> <!-- toggle dnd -->
     </string-array>
 
     <string-array name="fp_keys_screen_off_listArray">
@@ -59,6 +61,7 @@
         <item>@string/action_next_track</item>
         <item>@string/action_flashlight</item>
         <item>@string/action_camera</item>
+        <item>@string/action_dnd</item>
     </string-array>
     <string-array name="fp_keys_screen_off_listValues">
         <item>0</item>
@@ -70,5 +73,6 @@
         <item>109</item> <!-- next track -->
         <item>110</item> <!-- flashlight -->
         <item>111</item> <!-- camera -->
+        <item>122</item> <!-- toggle dnd -->
     </string-array>
 </resources>

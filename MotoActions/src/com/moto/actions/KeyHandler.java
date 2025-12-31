@@ -19,6 +19,7 @@ package com.moto.actions;
 
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
+import android.app.NotificationManager;
 import android.app.ISearchManager;
 import android.app.KeyguardManager;
 import android.content.ActivityNotFoundException;
@@ -348,6 +349,22 @@ public class KeyHandler implements DeviceKeyHandler {
             startActivitySafely(intent);
         }
     }
+    
+    private void toggleSilentNormal() {
+    	NotificationManager nm =
+            (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+    	if (nm == null) return;
+
+    	// Will only work if policy access is granted to this package
+    	if (!nm.isNotificationPolicyAccessGranted()) return;
+
+    	int cur = nm.getCurrentInterruptionFilter();
+    	int next = (cur == NotificationManager.INTERRUPTION_FILTER_NONE)
+           	 ? NotificationManager.INTERRUPTION_FILTER_ALL
+            	: NotificationManager.INTERRUPTION_FILTER_NONE;
+
+    	nm.setInterruptionFilter(next);
+   }
 
     private void toggleFlashlight() {
         String rearCameraId = getRearCameraId();
@@ -557,6 +574,9 @@ public class KeyHandler implements DeviceKeyHandler {
                     goToPipMode();
                 }
                 break;
+            case ACTION_TOGGLE_DND:
+    		toggleSilentNormal();
+    		break;     
             case ACTION_LAST_APP:
                 if (!mKeyguardManager.inKeyguardRestrictedInputMode()) {
                     switchToLastApp(mContext);
