@@ -447,7 +447,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
         boolean isFPScanCode = ArrayUtils.contains(sSupportedFPGestures, scanCode);
         boolean isAssistantCode = scanCode == ASSISTANT_SCANCODE;
-        if (!isFPScanCode || !isAssistantCode) {
+        if (!isFPScanCode && !isAssistantCode) {
             return false;
         }
 

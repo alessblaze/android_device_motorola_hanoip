@@ -392,6 +392,9 @@ PRODUCT_PACKAGES += \
     MotoActions \
     MotoCommonOverlay
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/MotoActions/privapp-permissions-com.moto.actions.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-com.moto.actions.xml
+
 # Net
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0

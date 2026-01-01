@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <privapp-permissions package="com.moto.actions">
+
+        <!-- Input / keys -->
+        <permission name="android.permission.INJECT_EVENTS"/>
+
+        <!-- Power / wake -->
+        <permission name="android.permission.DEVICE_POWER"/>
+        <permission name="android.permission.WAKE_LOCK"/>
+
+        <!-- Audio / media -->
+        <permission name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+
+        <!-- Notifications / DND -->
+        <permission name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
+
+        <!-- Secure settings -->
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+        <permission name="android.permission.READ_DEVICE_CONFIG"/>
+
+    </privapp-permissions>
+</permissions>
