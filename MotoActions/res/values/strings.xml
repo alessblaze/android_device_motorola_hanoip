@@ -94,6 +94,7 @@
     <string name="action_messages">Open messages app</string>
     <string name="action_pip">Picture-in-Picture mode</string>
     <string name="action_dnd">Toggle DND</string>
+    <string name="action_ringer">Toggle Silent/Normal</string>
 
     <!-- Chop-chop gesture -->
     <string name="chop_chop_gesture_title">Chop-chop</string>

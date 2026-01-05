@@ -39,6 +39,7 @@ import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.hardware.input.InputManager;
+import android.media.AudioManager;
 import android.media.session.MediaSessionLegacyHelper;
 import android.net.Uri;
 import android.os.Bundle;
@@ -365,6 +366,28 @@ public class KeyHandler implements DeviceKeyHandler {
 
     	nm.setInterruptionFilter(next);
    }
+   
+   private void toggleRingerNormalSilent() {
+    	AudioManager am = mContext.getSystemService(AudioManager.class);
+    	if (am == null) return;
+
+    	boolean ringMuted  = am.isStreamMute(AudioManager.STREAM_RING);
+    	boolean notifMuted = am.isStreamMute(AudioManager.STREAM_NOTIFICATION);
+
+    	final boolean mixed = (ringMuted != notifMuted);
+
+    	// Policy choice: if mixed, force "muted" to reach a consistent state.
+    	final boolean targetMute = mixed ? true : !(ringMuted && notifMuted);
+
+    	final int dir = targetMute ? AudioManager.ADJUST_MUTE : AudioManager.ADJUST_UNMUTE;
+
+    	am.adjustStreamVolume(AudioManager.STREAM_RING, dir, AudioManager.FLAG_SHOW_UI);
+    	am.adjustStreamVolume(AudioManager.STREAM_NOTIFICATION, dir, AudioManager.FLAG_SHOW_UI);
+	final String msg = targetMute ? "Ringer + notifications: Muted"
+                                  : "Ringer + notifications: Unmuted";
+	mHandler.post(() -> Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show());
+	}
+	
 
     private void toggleFlashlight() {
         String rearCameraId = getRearCameraId();
@@ -576,7 +599,10 @@ public class KeyHandler implements DeviceKeyHandler {
                 break;
             case ACTION_TOGGLE_DND:
     		toggleSilentNormal();
-    		break;     
+    		break;   
+    	    case ACTION_TOGGLE_AUDIO:
+    		toggleRingerNormalSilent();
+    		break; 	  
             case ACTION_LAST_APP:
                 if (!mKeyguardManager.inKeyguardRestrictedInputMode()) {
                     switchToLastApp(mContext);
