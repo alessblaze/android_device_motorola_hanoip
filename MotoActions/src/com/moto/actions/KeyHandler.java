@@ -368,26 +368,33 @@ public class KeyHandler implements DeviceKeyHandler {
    }
    
    private void toggleRingerNormalSilent() {
-    	AudioManager am = mContext.getSystemService(AudioManager.class);
-    	if (am == null) return;
+   	AudioManager am = mContext.getSystemService(AudioManager.class);
+   	 if (am == null) return;
 
-    	boolean ringMuted  = am.isStreamMute(AudioManager.STREAM_RING);
-    	boolean notifMuted = am.isStreamMute(AudioManager.STREAM_NOTIFICATION);
+   	 // Optional: if Zen/DND might be involved, normalize it too.
+   	 NotificationManager nm = mContext.getSystemService(NotificationManager.class);
+   	 if (nm != null && nm.isNotificationPolicyAccessGranted()) {
+   	     nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL);
+   	 }
 
-    	final boolean mixed = (ringMuted != notifMuted);
+   	 // Normalize ringer mode so SystemUI's top icons are back to "Normal".
+   	 if (am.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) {
+   	     am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+   	 }
 
-    	// Policy choice: if mixed, force "muted" to reach a consistent state.
-    	final boolean targetMute = mixed ? true : !(ringMuted && notifMuted);
+   	 boolean ringMuted  = am.isStreamMute(AudioManager.STREAM_RING);
+   	 boolean notifMuted = am.isStreamMute(AudioManager.STREAM_NOTIFICATION);
+   	 final boolean mixed = (ringMuted != notifMuted);
+   	 final boolean targetMute = mixed ? true : !(ringMuted && notifMuted);
+   	 final int dir = targetMute ? AudioManager.ADJUST_MUTE : AudioManager.ADJUST_UNMUTE;
 
-    	final int dir = targetMute ? AudioManager.ADJUST_MUTE : AudioManager.ADJUST_UNMUTE;
+   	 am.adjustStreamVolume(AudioManager.STREAM_NOTIFICATION, dir, 0);
+   	 am.adjustStreamVolume(AudioManager.STREAM_RING, dir, AudioManager.FLAG_SHOW_UI);
 
-    	am.adjustStreamVolume(AudioManager.STREAM_RING, dir, AudioManager.FLAG_SHOW_UI);
-    	am.adjustStreamVolume(AudioManager.STREAM_NOTIFICATION, dir, AudioManager.FLAG_SHOW_UI);
-	final String msg = targetMute ? "Ringer + notifications: Muted"
-                                  : "Ringer + notifications: Unmuted";
-	mHandler.post(() -> Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show());
+   	 final String msg = targetMute ? "Ringer + notifications: Muted"
+   	                               : "Ringer + notifications: Unmuted";
+   	 mHandler.post(() -> Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show());
 	}
-	
 
     private void toggleFlashlight() {
         String rearCameraId = getRearCameraId();
