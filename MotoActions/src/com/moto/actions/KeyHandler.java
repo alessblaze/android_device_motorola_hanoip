@@ -366,36 +366,25 @@ public class KeyHandler implements DeviceKeyHandler {
 
     	nm.setInterruptionFilter(next);
    }
-   
-   private void toggleRingerNormalSilent() {
-   	AudioManager am = mContext.getSystemService(AudioManager.class);
-   	 if (am == null) return;
+    
+    private void toggleRingerNormalSilent() {
+    	AudioManager am = mContext.getSystemService(AudioManager.class);
+    	if (am == null) return;
+	// if we do not call internal api. it could also switch on DND INTERRUPT_FILTER from
+	// external getRingerMode() or setRingerMode()
+    	int cur = am.getRingerModeInternal();  
+    	int next = (cur == AudioManager.RINGER_MODE_SILENT)
+            ? AudioManager.RINGER_MODE_NORMAL
+            : AudioManager.RINGER_MODE_SILENT;
 
-   	 // Optional: if Zen/DND might be involved, normalize it too.
-   	 NotificationManager nm = mContext.getSystemService(NotificationManager.class);
-   	 if (nm != null && nm.isNotificationPolicyAccessGranted()) {
-   	     nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL);
-   	 }
+    	am.setRingerModeInternal(next);        
 
-   	 // Normalize ringer mode so SystemUI's top icons are back to "Normal".
-   	 if (am.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) {
-   	     am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-   	 }
-
-   	 boolean ringMuted  = am.isStreamMute(AudioManager.STREAM_RING);
-   	 boolean notifMuted = am.isStreamMute(AudioManager.STREAM_NOTIFICATION);
-   	 final boolean mixed = (ringMuted != notifMuted);
-   	 final boolean targetMute = mixed ? true : !(ringMuted && notifMuted);
-   	 final int dir = targetMute ? AudioManager.ADJUST_MUTE : AudioManager.ADJUST_UNMUTE;
-
-   	 am.adjustStreamVolume(AudioManager.STREAM_NOTIFICATION, dir, 0);
-   	 am.adjustStreamVolume(AudioManager.STREAM_RING, dir, AudioManager.FLAG_SHOW_UI);
-
-   	 final String msg = targetMute ? "Ringer + notifications: Muted"
-   	                               : "Ringer + notifications: Unmuted";
-   	 mHandler.post(() -> Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show());
+    	// refresh visible volume dialog
+    	am.adjustStreamVolume(AudioManager.STREAM_RING,
+            AudioManager.ADJUST_SAME,
+            AudioManager.FLAG_SHOW_UI);
 	}
-
+    
     private void toggleFlashlight() {
         String rearCameraId = getRearCameraId();
         if (rearCameraId != null) {
