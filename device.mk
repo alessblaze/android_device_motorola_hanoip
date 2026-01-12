@@ -53,7 +53,8 @@ PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Dolby
-$(call inherit-product, hardware/motorola/dolby/setup.mk)
+#$(call inherit-product, hardware/motorola/dolby/setup.mk)
+$(call inherit-product, hardware/dolby/dolby.mk)    
 
 # Properties
 -include $(LOCAL_PATH)/properties.mk
@@ -221,6 +222,7 @@ PRODUCT_PACKAGES += \
     libavservices_minijail.vendor \
     libhwbinder.vendor
 
+#    vulkan.freedreno needed for intree compilation
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.4-service \

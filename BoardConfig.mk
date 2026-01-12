@@ -166,11 +166,21 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 TARGET_SCREEN_DENSITY := 400
 TARGET_USES_DISPLAY_RENDER_INTENTS := true
+TARGET_USES_GRALLOC1 := true
 TARGET_USES_GRALLOC4 := true
 TARGET_USES_HWC2 := true
 TARGET_USES_ION := true
 TARGET_HAS_HDR_DISPLAY := true
 TARGET_HAS_WIDE_COLOR_DISPLAY := true
+
+
+
+# Enable Mesa Meson build
+#include vendor/mesa3d/mesa/android/Android.mk
+#BOARD_MESA3D_USES_MESON_BUILD := true
+
+# Enable Vulkan drivers
+#BOARD_MESA3D_VULKAN_DRIVERS := freedreno
 
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
@@ -190,8 +200,8 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 
 # HIDL
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/configs/vintf/framework_compatibility_matrix.xml
-DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/vintf/manifest.xml
+DEVICE_MATRIX_FILE += $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest.xml
 
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):init_hanoip
@@ -286,4 +296,5 @@ WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
-include hardware/motorola/dolby/BoardConfigVendor.mk
+#include hardware/motorola/dolby/BoardConfigVendor.mk
+include hardware/dolby/BoardConfigVendor.mk
