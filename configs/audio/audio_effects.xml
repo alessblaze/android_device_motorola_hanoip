@@ -52,8 +52,8 @@
         <library name="vqe" path="libswvqe.so"/>
         <!-- DOLBY END -->
         <!--Spatial Audio-->
-        <library name="spatializer" path="libswspatializer.so"/>
-        <!--library name="spatializer" path="libspatialaudio.so"/>-->
+        <!--<library name="spatializer" path="libswspatializer.so"/>-->
+        <library name="spatializer" path="libspatialaudio.so"/>
 	<!--Spatial Audio-->
     </libraries>
     <effects>
@@ -113,8 +113,8 @@
         <effect name="dlb_notification_listener" library="dvl" uuid="1f0091e3-6ad8-40fe-9b09-5948f9a26e7e"/>
         <effect name="dlb_voice_call_listener" library="dvl" uuid="58d13383-b41d-05df-d94e-bb23db293260"/>
         <!--DOLBY SPATIALIZER-->
-        <effect name="spatializer" library="spatializer" uuid="ccd4cf09-a79d-46c2-9aae-06a1698d6c8f"/>
-        <!--<effect name="spatializer" library="spatializer" uuid="cc4677de-ff72-11eb-9a03-0242ac130003"/>-->
+        <!--<effect name="spatializer" library="spatializer" uuid="ccd4cf09-a79d-46c2-9aae-06a1698d6c8f"/>-->
+        <effect name="spatializer" library="spatializer" uuid="cc4677de-ff72-11eb-9a03-0242ac130003"/>
         <!--DOLBY GAME-->
         <effect name="gamedap" library="gamedap" uuid="3783c334-d3a0-4d13-874f-0032e5fb80e2"/>
         <!--DOLBY VQE-->
