@@ -22,6 +22,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.speaker=true \
     ro.vendor.audio.sdk.fluencetype=fluencepro \
     ro.vendor.audio.sdk.ssr=false \
+    ro.vendor.audio.scenario.support=true
     vendor.audio.adm.buffering.ms=2 \
     vendor.audio.cts.media=false \
     vendor.audio.enable.mirrorlink=false \
