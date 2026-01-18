@@ -107,6 +107,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.bt.a2dp.aac_whitelist=false \
     persist.vendor.qcom.bluetooth.enable.splita2dp=true \
     persist.vendor.qcom.bluetooth.soc=cherokee \
+    persist.vendor.qcom.bluetooth.twsp_state.enabled=false \
+    persist.vendor.qcom.bluetooth.scram.enabled=false \
+    persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true \
     ro.bluetooth.a2dp_offload.supported=true \
     vendor.qcom.bluetooth.soc=cherokee
 
@@ -125,7 +128,14 @@ PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.profile.pan.nap.enabled?=true \
     bluetooth.profile.pan.panu.enabled?=true \
     bluetooth.profile.pbap.server.enabled?=true \
-    bluetooth.profile.sap.server.enabled?=true
+    bluetooth.profile.sap.server.enabled?=true \
+    bluetooth.profile.bap.broadcast.assist.enabled=false \
+    bluetooth.profile.bap.broadcast.source.enabled=false \
+    bluetooth.profile.bap.unicast.client.enabled=true \
+    bluetooth.profile.vcp.controller.enabled=true \
+    bluetooth.profile.csip.set_coordinator.enabled=true \
+    bluetooth.profile.mcp.server.enabled=true \
+    bluetooth.profile.ccp.server.enabled=true
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     vendor.bluetooth.soc=cherokee
