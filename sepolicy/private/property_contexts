@@ -4,3 +4,10 @@ ro.camera.res.fmq.       u:object_r:exported_default_prop:s0
 
 # Hardware
 ro.hardware.chipname               u:object_r:exported_default_prop:s0
+
+# media 
+ro.qcom.hdr.config         u:object_r:media_config_prop:s0
+media.settings.xml         u:object_r:media_config_prop:s0
+persist.usb.hvdcp.detect   u:object_r:media_config_prop:s0
+
+

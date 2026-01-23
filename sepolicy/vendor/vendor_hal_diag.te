@@ -1,0 +1,13 @@
+allow vendor_ims vendor_diag_device:chr_file rw_file_perms;
+allow vendor_netmgrd vendor_diag_device:chr_file rw_file_perms;
+allow vendor_cnd vendor_diag_device:chr_file rw_file_perms;
+allow vendor_qti vendor_diag_device:chr_file rw_file_perms;
+allow vendor_adpl vendor_diag_device:chr_file rw_file_perms;
+allow vendor_hal_imsrtp vendor_diag_device:chr_file rw_file_perms;
+allow rild vendor_diag_device:chr_file rw_file_perms;
+allow hal_audio_default vendor_diag_device:chr_file rw_file_perms;
+allow hal_sensors_default vendor_diag_device:chr_file rw_file_perms;
+allow hal_bluetooth_default vendor_diag_device:chr_file rw_file_perms;
+allow hal_tetheroffload_default vendor_diag_device:chr_file rw_file_perms;
+allow vendor_rmt_storage mnt_vendor_file:dir search;
+

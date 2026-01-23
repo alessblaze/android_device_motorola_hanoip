@@ -16,3 +16,6 @@ allow hal_audio_default self:fd use;
 
 allow hal_audio_default input_device:dir r_dir_perms;
 allow hal_audio_default input_device:chr_file { r_file_perms ioctl };
+
+get_prop(hal_bluetooth_default, vendor_bluetooth_prop)
+get_prop(bluetooth, vendor_bluetooth_prop)
