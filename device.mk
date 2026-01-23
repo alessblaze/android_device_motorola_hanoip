@@ -121,6 +121,11 @@ PRODUCT_PACKAGES += \
     audio.primary.sm6150 \
     audio.r_submix.default \
     audio.usb.default \
+    liba2dpoffload \
+    libbatterylistener \
+    libcomprcapture \
+    libexthwplugin \
+    libssrec \
     libaudio-resampler \
     libaudioroute \
     libhdmiedid \

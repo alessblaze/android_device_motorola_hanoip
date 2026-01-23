@@ -41,6 +41,9 @@ ro.vendor.carrier          u:object_r:vendor_mot_boot_prop:s0
 ro.vendor.boot.cid         u:object_r:vendor_mot_boot_prop:s0
 ro.vendor.fsg-id           u:object_r:vendor_mot_boot_prop:s0
 ro.vendor.zygote           u:object_r:vendor_mot_boot_prop:s0
+ro.vendor.board.platform   u:object_r:vendor_mot_boot_prop:s0
+ro.vendor.product.device   u:object_r:vendor_mot_boot_prop:s0
+ro.vendor.boot.alarmboot   u:object_r:vendor_mot_boot_prop:s0
 vendor.boot_completed      u:object_r:vendor_mot_boot_prop:s0
 
 # AOV

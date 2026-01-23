@@ -89,7 +89,7 @@ function set_density_by_fb() {
     fi
 }
 
-target=`getprop ro.board.platform`
+target=`getprop ro.vendor.board.platform`
 case "$target" in
     "msm7630_surf" | "msm7630_1x" | "msm7630_fusion")
         case "$soc_hwplatform" in
@@ -423,7 +423,7 @@ set_density_by_fb
 
 
 # set Lilliput LCD density for ADP
-product=`getprop ro.build.product`
+product=`getprop ro.vendor.product.device`
 
 case "$product" in
         "msmnile_au")
@@ -495,7 +495,7 @@ set_perms /sys/class/lcd_bias/secure_mode system.graphics 0660
 set_perms /sys/class/leds/wled/secure_mode system.graphics 0660
 
 boot_reason=`cat /proc/sys/kernel/boot_reason`
-reboot_reason=`getprop ro.boot.alarmboot`
+reboot_reason=`getprop ro.vendor.boot.alarmboot`
 if [ "$boot_reason" = "3" ] || [ "$reboot_reason" = "true" ]; then
     setprop ro.vendor.alarm_boot true
 else
