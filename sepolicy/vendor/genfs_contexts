@@ -26,6 +26,9 @@ genfscon sysfs /devices/virtual/input/input7/t2w-gesture/enable_wakeup          
 genfscon proc /sys/kernel/sched_lib_name                                        u:object_r:proc_sched_lib_mask_cpuinfo:s0
 genfscon proc /sys/kernel/sched_lib_mask_force                                  u:object_r:proc_sched_lib_mask_cpuinfo:s0
 
+# Input Devices
+genfscon sysfs /devices/virtual/input    u:object_r:vendor_sysfs_input:s0
+
 # Graphics
 genfscon sysfs /devices/platform/soc/soc:qcom,dsi-display               u:object_r:vendor_sysfs_graphics:s0
 

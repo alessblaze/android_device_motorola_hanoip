@@ -21,6 +21,9 @@ type proc_sched_lib_mask_cpuinfo, proc_type, fs_type;
 # Motorola
 type proc_moto_boot, proc_type, fs_type;
 
+# Input Devices
+type vendor_sysfs_input, fs_type, sysfs_type;
+
 # Thermal
 type sysfs_hwmon, sysfs_type, fs_type;
 
