@@ -1,5 +1,11 @@
 # Camera
-vendor.camera.coming.cts   u:object_r:vendor_camera_prop:s0
+persist.vendor.media.recorder.flip    u:object_r:vendor_camera_prop:s0
+ro.vendor.camera.res.fmq.size         u:object_r:vendor_camera_prop:s0
+ro.vendor.camera.req.fmq.size         u:object_r:vendor_camera_prop:s0
+vendor.camera.coming.cts              u:object_r:vendor_camera_prop:s0
+vendor.camera.led.torchmode           u:object_r:vendor_camera_prop:s0
+persist.vendor.camera.expose.aux      u:object_r:vendor_camera_prop:s0
+persist.vendor.camera.physical.num    u:object_r:vendor_camera_prop:s0
 
 # Radio
 vendor.ril.                                     u:object_r:vendor_radio_prop:s0

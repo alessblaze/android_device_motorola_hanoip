@@ -1,6 +1,12 @@
 # Fingerprint 
 type fingerprint_device, dev_type;
 
+# Moto partitions
+type vendor_hw_block_device, dev_type;
+type vendor_prodpersist_block_device, dev_type;
+type vendor_utags_block_device, dev_type;
+
+
 # VL53L1
 type vl53l1_device, dev_type;
 

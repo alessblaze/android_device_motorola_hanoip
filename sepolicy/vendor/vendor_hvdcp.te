@@ -1,0 +1,2 @@
+allow vendor_hvdcp sysfs_batteryinfo:dir search;
+allow vendor_hvdcp sysfs_batteryinfo:file r_file_perms;
