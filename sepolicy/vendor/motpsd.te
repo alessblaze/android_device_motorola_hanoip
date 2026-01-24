@@ -7,6 +7,7 @@ allow motpsd kmsg_device:chr_file rw_file_perms;
 
 allow motpsd vendor_sysfs_sensors:dir r_dir_perms;
 allow motpsd vendor_sysfs_sensors:file rw_file_perms;
+rw_dir_file(motpsd, vendor_sysfs_input)
 r_dir_file(motpsd, sysfs_msm_subsys)
 r_dir_file(motpsd, vendor_sysfs_graphics)
 get_prop(motpsd, vendor_sensors_prop)

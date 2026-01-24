@@ -12,6 +12,9 @@ set_prop(hal_camera_default, vendor_camera_prop)
 
 # VL53L1
 allow hal_camera_default vl53l1_device:chr_file rw_file_perms;
+allow hal_camera_default input_device:dir r_dir_perms;
+allow hal_camera_default input_device:chr_file r_file_perms;
+allow hal_camera_default vendor_sysfs_laser:file rw_file_perms;
 
 # DSP
 allow hal_camera_default vendor_xdsp_device:chr_file read;

@@ -2,6 +2,7 @@ allow hal_power_default {
   vendor_sysfs_devfreq
   sysfs_msm_subsys
   vendor_sysfs_sensors
+  vendor_sysfs_input
 }:dir search;
 
 allow hal_power_default {
@@ -15,6 +16,7 @@ allow hal_power_default {
   vendor_sysfs_scsi_host
   sysfs_scsi_devices_0000
   vendor_sysfs_sensors
+  vendor_sysfs_input
 }:{
   file
   lnk_file
