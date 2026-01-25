@@ -44,6 +44,11 @@
 /(vendor|system/vendor)/bin/vl53l1_daemon               u:object_r:vl53l1_exec:s0
 /(vendor|system/vendor)/bin/vl53l1_daemon_main          u:object_r:vl53l1_exec:s0
 /dev/laser                                              u:object_r:vl53l1_device:s0
+/sys/devices/platform/cam_sync/video4linux/video[0-33]/name                                 u:object_r:vendor_sysfs_graphics:s0
+/sys/devices/platform/soc/a600000.ssusb/a600000.dwc3/gadget/video4linux/video[0-33]/name    u:object_r:vendor_sysfs_graphics:s0
+/sys/devices/platform/soc/soc:qcom,cam-req-mgr/video4linux/video[0-33]/name                 u:object_r:vendor_sysfs_graphics:s0
+/sys/devices/platform/soc/soc:qcom,cam-sync/video4linux/video[0-33]/name                    u:object_r:vendor_sysfs_graphics:s0
+/sys/devices/platform/soc/aa00000.qcom,vidc0/video4linux/video[0-33]/name                   u:object_r:vendor_sysfs_graphics:s0
 /data/vendor/misc/imager                                u:object_r:vendor_camera_data_file:s0
 /sys/devices/virtual/input/input[0-9]+/xtalk	        u:object_r:vendor_sysfs_laser:s0
 /sys/devices/virtual/input/input[0-9]+/offset	        u:object_r:vendor_sysfs_laser:s0

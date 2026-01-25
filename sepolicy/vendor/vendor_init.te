@@ -10,8 +10,10 @@ set_prop(vendor_init, vendor_time_service_prop)
 set_prop(vendor_init, vendor_fm_prop)
 set_prop(vendor_init, vendor_mm_parser_prop)
 set_prop(vendor_init, vendor_bluetooth_prop)
+get_prop(vendor_init, vendor_alarm_boot_prop)
 
 set_prop(vendor_init, vendor_ssr_prop)
+set_prop(vendor_init, vendor_hvdcp_opti_prop)
 set_prop(vendor_init, media_config_prop)
 set_prop(vendor_init, vendor_usb_prop)
 
