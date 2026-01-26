@@ -151,9 +151,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.charger.enable_suspend=true
 
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.mediaserver.64b.enable=true
-
 # Chipset
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.soc.manufacturer=QTI \
