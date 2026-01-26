@@ -151,6 +151,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.charger.enable_suspend=true
 
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.mediaserver.64b.enable=true
+
 # Chipset
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.soc.manufacturer=QTI \
@@ -257,8 +260,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     media.settings.xml=/vendor/etc/media_profiles_vendor.xml \
-    debug.stagefright.ccodec=1 \
     debug.stagefright.omx_default_rank=0 \
+    debug.stagefright.c2inputsurface=-1 \
+    debug.stagefright.ccodec=4 \
+    debug.c2.use_dmabufheaps=1 \
     persist.vendor.media.recorder.bt709=true
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
