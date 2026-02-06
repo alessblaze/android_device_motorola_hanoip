@@ -65,6 +65,8 @@
             <name>IOmxStore</name>
             <instance>default</instance>
         </interface>
+        <fqname>@1.0::IOmx/default</fqname>
+        <fqname>@1.0::IOmxStore/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.memtrack</name>
@@ -552,6 +554,11 @@
     <hal format="hidl">
         <name>android.hardware.media.c2</name>
         <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IComponentStore</name>
+            <instance>default</instance>
+        </interface>
         <fqname>@1.0::IComponentStore/default</fqname>
     </hal>
 </manifest>
